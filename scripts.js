@@ -485,3 +485,132 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('hashchange', handleHash);
   handleHash();
 });
+
+
+
+(() => {
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeToggle');
+
+  // 1) Cargar preferencia guardada o del sistema
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    root.setAttribute('data-theme', saved);
+  } else if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) {
+    root.setAttribute('data-theme','dark');
+  }
+
+  // 2) Actualizar icono
+  const setIcon = () => {
+    const dark = root.getAttribute('data-theme') === 'dark';
+    if (btn) btn.textContent = dark ? '☀️' : '🌙';
+    // opcional para la barra del navegador en móviles
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement('meta'); meta.name='theme-color'; document.head.appendChild(meta);
+    }
+    meta.content = dark ? '#0e1117' : '#ffffff';
+  };
+  setIcon();
+
+  // 3) Alternar al click
+  btn?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    setIcon();
+  });
+})();
+
+// ===== FOOTER: partículas animadas + reveal =====
+(() => {
+  const canvas = document.getElementById('footerFx');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0, raf = null, particles = [], visible = false;
+
+  const themeIsDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    w = canvas.width  = Math.floor(rect.width * devicePixelRatio);
+    h = canvas.height = Math.floor(rect.height * devicePixelRatio);
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    makeParticles();
+  }
+
+  function makeParticles(){
+    const count = Math.max(28, Math.floor(w/50));
+    particles = Array.from({length: count}, () => ({
+      x: Math.random()*w, y: Math.random()*h,
+      r: 2 + Math.random()*3.5,
+      vx: (-0.4 + Math.random()*0.8),
+      vy: (-0.2 + Math.random()*0.6),
+      hue: Math.random() < 0.5 ? 28 : 184 // naranja, turquesa
+    }));
+  }
+
+  function step(){
+    if (!visible) { raf = requestAnimationFrame(step); return; }
+    ctx.clearRect(0,0,w,h);
+
+    // fondo tenue (para atenuar contraste si el tema es claro)
+    if (!themeIsDark()){
+      ctx.fillStyle = 'rgba(0,0,0,0.03)';
+      ctx.fillRect(0,0,w,h);
+    }
+
+    for (const p of particles){
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = w+10; if (p.x > w+10) p.x = -10;
+      if (p.y < -10) p.y = h+10; if (p.y > h+10) p.y = -10;
+
+      const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*6);
+      const base = p.hue;
+      const alpha = themeIsDark() ? 0.18 : 0.12;
+      grad.addColorStop(0, `hsla(${base} 90% 55% / ${alpha*2})`);
+      grad.addColorStop(1, `hsla(${base} 90% 55% / 0)`);
+
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r*6, 0, Math.PI*2); ctx.fill();
+    }
+    raf = requestAnimationFrame(step);
+  }
+
+  // Inicia/pausa según visibilidad
+  const io = new IntersectionObserver(es=>{
+    visible = es.some(e=>e.isIntersecting);
+  }, {threshold: 0.1});
+  io.observe(canvas);
+
+  // Reaccionar a cambios de tema en vivo
+  const themeObserver = new MutationObserver(resize);
+  themeObserver.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+
+  window.addEventListener('resize', resize, {passive:true});
+  resize();
+  step();
+
+  // Reveal de tarjetas
+  const cards = document.querySelectorAll('.site-footer.pro .fcard');
+  if (cards.length && 'IntersectionObserver' in window){
+    const io2 = new IntersectionObserver(es=>{
+      es.forEach(e=> e.isIntersecting && e.target.classList.add('show'));
+    }, {threshold: .18});
+    cards.forEach(c=>{ c.classList.add('reveal'); io2.observe(c); });
+  }
+})();
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else {
+    // si no hay preferencia guardada, inicia en oscuro
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }function toggleTheme() {
+  const html = document.documentElement;
+  const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');

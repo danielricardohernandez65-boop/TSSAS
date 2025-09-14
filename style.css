@@ -843,3 +843,396 @@
   transform: scale(1.2);
   color: #eb8136;
 }
+/* --- Reset básico y tipografía global --- */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; font-family: "Montserrat", sans-serif; color: #111; }
+
+/* --- NAV fijo arriba y logo con tamaño controlado --- */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 24px;
+}
+
+/* Limita el tamaño del logo (ajusta el máximo si quieres) */
+nav img {
+  display: block;
+  height: 140px; /* cámbialo a 120, 140, 160px según te guste */
+  width: auto;
+}
+
+/* Links del nav */
+.enlaces-servicios a {
+  margin: 0 12px;
+  color: #333; text-decoration: none; font-weight: 600;
+}
+.enlaces-servicios a:hover { color: #eb8136; }
+:root{
+  /* LIGHT */
+  --bg:#ffffff;
+  --text:#111111;
+  --muted:#555;
+  --surface:#f7f8fb;
+  --card:#ffffff;
+  --border:#e7e9ee;
+  --brand:#eb8136;
+}
+
+:root[data-theme="dark"]{
+  /* DARK */
+  --bg:#0e1117;
+  --text:#eaeaea;
+  --muted:#cfd3da;
+  --surface:#0b0d13;
+  --card:#141821;
+  --border:rgba(255,255,255,.12);
+  --brand:#eb8136; /* igual para mantener el naranja */
+}
+
+/* Aplica variables base (no rompe lo que ya tienes) */
+html{color-scheme: light dark;}
+body{ background:var(--bg); color:var(--text); }
+
+/* Nav y links */
+nav{ background:var(--bg); border-bottom:1px solid var(--border); }
+.enlaces-servicios a{ color:var(--text); }
+.enlaces-servicios a:hover{ color:var(--brand); }
+
+/* Secciones que tenían colores fijos → usa variables sin tocar tus reglas viejas */
+.sec-faq{ background:var(--surface); }
+.faq-item{ background:var(--card); border-color:var(--border); color:var(--text); }
+.faq-item p{ color:var(--muted); }
+
+.srv-card{ background:var(--card); border-color:var(--border); }
+.srv-card p{ color:var(--muted); }
+
+/* Footer toma tus estilos “pro”, pero ajusta textos por tema */
+.site-footer{ color:var(--muted); }
+.site-footer h4, .site-footer a{ color:var(--text); }
+.site-footer a:hover{ color:#fff; }
+.copy{ color:var(--muted); }
+
+/* Botón del tema en el nav */
+#themeToggle{
+  margin-left:12px; padding:8px 10px; border:1px solid var(--border);
+  background:transparent; color:var(--text); border-radius:10px; cursor:pointer;
+}
+#themeToggle:hover{ border-color:var(--brand); }
+/* ===== FIX DE CONTRASTE (claro/oscuro) ===== */
+
+/* Títulos y párrafos base */
+h1, h2, h3, h4, .section-title { color: var(--text); }
+.content-section p,
+.main-content p { color: var(--muted); }
+
+/* Tarjetas de servicios */
+.srv-card { background: var(--card); border-color: var(--border); }
+.srv-card h3 { color: var(--text); }
+.srv-card p  { color: var(--muted); }
+
+/* Botón "Ver más" (usa la marca en ambos temas) */
+.srv-card .btn-outline{
+  border-color: var(--brand);
+  color: var(--brand);
+  background: transparent;
+}
+:root[data-theme="dark"] .srv-card .btn-outline:hover,
+.srv-card .btn-outline:hover{
+  background: var(--brand);
+  color: #111; /* contraste sobre naranja */
+}
+
+/* Chips del filtro (antes se veían muy claritos en tema claro) */
+.chip{
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--brand) 60%, transparent);
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+}
+:root[data-theme="dark"] .chip{
+  color: var(--text);
+  background: color-mix(in srgb, var(--brand) 15%, transparent);
+  border-color: var(--brand);
+}
+.chip.active{ background: var(--brand); color:#111; }
+
+/* FAQ */
+.faq-item{ background: var(--card); border-color: var(--border); color: var(--text); }
+.faq-item > summary{ color: var(--text); }
+.faq-item p{ color: var(--muted); }
+
+/* Texto de headings grandes en tarjetas oscuras (por si alguna regla vieja pone #222) */
+.sec-servicios h3, .faq-accordion h2 { color: var(--text); }
+
+/* Subtítulo bajo "Nuestros Servicios" (quedaba muy pálido en claro) */
+#servicios .content-section p{
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+/* ===== Footer PRO (dark/light + animaciones) ===== */
+.site-footer.pro{
+  position: relative;
+  overflow: clip;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 95%, #000 5%), var(--surface));
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  padding-top: 36px;
+}
+
+.site-footer.pro .footer-title{
+  text-align:center; margin:0 0 18px; color: var(--text); font-weight:800; letter-spacing:.5px;
+}
+
+/* subrayado animado del título */
+.accent-underline{
+  display:inline-block; position:relative; left:50%; transform:translateX(-50%);
+}
+.accent-underline::after{
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:4px;
+  border-radius:3px; background:
+  linear-gradient(90deg, transparent 0%, var(--brand) 20%, #2cbec1 50%, var(--brand) 80%, transparent 100%);
+  background-size:200% 100%; animation: sweep 3.8s linear infinite;
+  opacity:.9;
+}
+@keyframes sweep{ to{ background-position: -200% 0 } }
+
+.site-footer.pro .footer-grid{
+  display:grid; grid-template-columns: repeat(3,1fr); gap:24px; padding: 10px 0 28px;
+}
+@media (max-width: 900px){ .site-footer.pro .footer-grid{ grid-template-columns:1fr } }
+
+.fcard{
+  position:relative;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border:1px solid var(--border);
+  border-radius:16px; padding:18px 20px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  backdrop-filter: blur(4px);
+}
+.fcard:hover{
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--brand) 60%, var(--border));
+  box-shadow: 0 14px 38px rgba(0,0,0,.28);
+}
+.fcard h4{
+  margin:0 0 10px; color: var(--text); font-weight:800; letter-spacing:.3px; position:relative; padding-left:12px;
+}
+.fcard h4::before{
+  content:""; position:absolute; left:0; top:.45em; width:6px; height:1.2em; border-radius:3px; background: var(--brand);
+}
+.fcard ul{ margin:0; padding-left:16px; color: var(--muted); }
+.fcard a{ color: var(--text); text-decoration:none; border-bottom:1px dashed color-mix(in srgb, var(--brand) 60%, transparent); }
+.fcard a:hover{ color:#fff; background: color-mix(in srgb, var(--brand) 20%, transparent); }
+
+.site-footer.pro .footer-bottom{
+  display:flex; align-items:center; gap:16px; justify-content:space-between;
+  padding:14px 0 24px; border-top:1px solid var(--border); margin-top:8px;
+}
+.site-footer.pro .mini-logo{ height:28px; width:auto; filter: drop-shadow(0 1px 0 rgba(0,0,0,.1)); }
+.site-footer.pro .copy{ color: var(--muted); text-align:center; flex:1; }
+.site-footer.pro .social-mini a{
+  display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px;
+  border-radius:10px; color: var(--text); border:1px solid var(--border); text-decoration:none;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.site-footer.pro .social-mini a:hover{
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--brand) 18%, transparent);
+  border-color: var(--brand);
+}
+
+/* Canvas de partículas al fondo */
+#footerFx{
+  position:absolute; inset:0; width:100%; height:100%;
+  display:block; pointer-events:none; opacity:.6; mix-blend-mode: plus-lighter;
+}
+
+/* Reveal suave para tarjetas al entrar */
+.fcard.reveal{ opacity:0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+.fcard.reveal.show{ opacity:1; transform: translateY(0); }
+/* === PALETA GLOBAL DE TEMA === */
+:root {
+  /* Dark por defecto (coincide con tu arranque en oscuro) */
+  --bg: #0e1117;
+  --surface: #0b0f14;
+  --text: #e8eef6;
+  --muted: #a8b3c2;
+  --card: #161b22;
+  --border: rgba(255,255,255,.10);
+  --brand: #eb8136;   /* naranja */
+  --brand2: #2cbec1;  /* turquesa */
+}
+
+/* Tema CLARO */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f7f8fb;
+  --text: #0f1720;
+  --muted: #4b5563;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --brand: #eb8136;
+  --brand2: #2cbec1;
+}
+
+/* Reglas base que deben usar variables */
+body { background: var(--bg); color: var(--text); }
+hr, .divider { border-color: var(--border); }
+
+/* Elementos “genéricos” que en tu CSS tenían colores fijos */
+.enlaces-servicios a { color: var(--text); }
+.enlaces-servicios a.active { color: var(--brand); border-bottom: 2px solid var(--brand); }
+/* ===== CONTACTO: tema oscuro (por defecto) ===== */
+body.contacto {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #18212a 0%, transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* Partículas y aurora */
+body.contacto #tsparticles { position: fixed; inset: 0; z-index: -2; }
+body.contacto .aurora{
+  position: fixed; inset: -20% -10% auto auto; z-index: -1;
+  background:
+    radial-gradient(closest-side, color-mix(in srgb, var(--brand2) 35%, transparent) 0%, transparent 60%),
+    radial-gradient(closest-side, color-mix(in srgb, var(--brand) 30%, transparent) 0%, transparent 60%);
+  filter: blur(30px); opacity:.9; mix-blend-mode: screen;
+  animation: float 12s ease-in-out infinite alternate;
+}
+@keyframes float{ from{ transform:translate(10px,10px) } to{ transform:translate(-40px,-20px) } }
+
+/* Contenedor */
+body.contacto .shell { width: min(1100px, 92vw); margin: 32px auto 80px; }
+
+/* Tarjetas */
+body.contacto .card{
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  color: var(--text);
+}
+body.contacto .card h3 { color: var(--text); }
+body.contacto .list li { color: color-mix(in srgb, var(--text) 85%, transparent); }
+body.contacto .muted { color: var(--muted); }
+
+/* Botones */
+body.contacto .btn{ background: var(--brand); color:#111; }
+body.contacto .btn.ghost{ background: transparent; color: var(--text); border: 1px solid var(--border); }
+
+/* Mini mapa */
+body.contacto .mini-map{
+  width:100%; height:220px; border-radius:14px; border:1px solid var(--border);
+  margin:10px 0 8px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.35);
+}
+.leaflet-container{ background:#10151a; } /* fallback al cargar tiles */
+
+/* ===== CONTACTO: tema CLARO ===== */
+:root[data-theme="light"] body.contacto {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #e8eef6 0%, transparent 60%),
+    var(--bg);
+}
+/* Aurora más suave en claro */
+:root[data-theme="light"] body.contacto .aurora{
+  mix-blend-mode: normal;
+  opacity: .6;
+}
+/* Tarjeta clara */
+:root[data-theme="light"] body.contacto .card{
+  background: #fff;
+  border-color: var(--border);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+:root[data-theme="light"] body.contacto .btn.ghost{
+  color: var(--text);
+  border-color: var(--border);
+}
+/* Mapa en claro */
+:root[data-theme="light"] .leaflet-container{ background:#f2f4f7; }
+.site-footer.pro{
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 95%, #000 5%), var(--surface));
+  color: var(--text);
+  border-top: 1px solid var(--border);
+}
+.site-footer.pro .fcard{
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border-color: var(--border);
+}
+.site-footer.pro .copy{ color: var(--muted); }
+/* ===== CONTACTO en MODO CLARO ===== */
+:root[data-theme="light"] body.contacto {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #f0f4f9 0%, transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* Tarjetas más definidas */
+:root[data-theme="light"] body.contacto .card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Títulos e iconos */
+:root[data-theme="light"] body.contacto .card h3 {
+  color: #111; /* negro para contraste */
+}
+:root[data-theme="light"] body.contacto .icon {
+  fill: var(--brand); /* naranjita de tu marca */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+/* Listas de datos */
+:root[data-theme="light"] body.contacto .list li {
+  color: #374151; /* gris oscuro legible */
+}
+
+/* Texto secundario */
+:root[data-theme="light"] body.contacto .muted {
+  color: #6b7280; /* gris medio */
+}
+
+/* Botones */
+:root[data-theme="light"] body.contacto .btn {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+}
+:root[data-theme="light"] body.contacto .btn.ghost {
+  background: transparent;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+}
+
+/* Footer PRO (para que contraste mejor) */
+:root[data-theme="light"] .site-footer.pro {
+  background: linear-gradient(180deg, #fafafa, #f1f5f9);
+  color: #111;
+}
+:root[data-theme="light"] .site-footer.pro .fcard {
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+:root[data-theme="light"] .site-footer.pro h4 {
+  color: #111;
+}
+:root[data-theme="light"] .site-footer.pro .copy {
+  color: #6b7280;
+}
+:root{
+  --ff-heading: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --ff-body:    "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+html { font-family: var(--ff-body); }
+h1,h2,h3,h4,h5,h6 { font-family: var(--ff-heading); }
+
+/* asegúrate que todo herede (por si algún bloque seteó otra fuente) */
+*, *::before, *::after { font-family: inherit; }
