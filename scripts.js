@@ -339,84 +339,90 @@ window.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   // ===== Contenido + imagen de cada servicio =====
-  const SERVICIOS_DETALLE = {
-    mejora: {
-      titulo: 'Auditoría Interna',
-      img: 'assets/auditoria.jpg',
-      html: `
-        <h4>Auditorías y sistemas de gestión</h4>
-        <ul>
-          <li>Sistema de Gestión en Seguridad y Salud SGSS (ISO 45001:2018)</li>
-          <li>Seguridad y salud en el trabajo con enfoque en energía eléctrica (Res. 5018:2019)</li>
-          <li>Registro Uniforme de Evaluación del Sistema de Gestión en Seguridad, Salud Ocupacional y Ambiente para Contratistas – RUC</li>
-          <li>Sistema de Gestión de la Calidad (ISO 9001:2015)</li>
-          <li>Sistemas Integrados de Gestión HSEQ</li>
-          <li>Sistema de Gestión Ambiental SGA (ISO 14001:2015)</li>
-          <li>Gestión del Riesgo (ISO 31000:2018)</li>
-          <li>Sistema de Gestión de Seguridad Vial (ISO 39001:2012)</li>
-          <li>Auditorías internas a Sistemas de Gestión (ISO 19011:2018)</li>
-          <li>Gestión del Riesgo de Desastres (Decreto 2157 de 2017)</li>
-          <li>Sistema de Gestión en Control y Seguridad BASC (SGCS BASC V5–2017)</li>
-        </ul>
-      `
-    },
-    consultoria: {
-      titulo: 'Asesoría y Consultoría',
-      img: 'assets/asesoria.jpg',
-      html: `
-        <h4>Acompañamiento técnico</h4>
-        <ul>
-          <li>Comité de Convivencia y COPASST</li>
-          <li>Identificación de peligros y valoración de riesgos</li>
-          <li>Investigación de incidentes y accidentes de trabajo</li>
-          <li>Mediciones de Higiene Industrial y Ambiental</li>
-          <li>Programas de bioseguridad y psicosocial</li>
-          <li>Diagnóstico de condiciones de salud</li>
-          <li>Programas de estilos de vida saludables</li>
-          <li>Protocolos y toma de muestras</li>
-          <li>Desinfección y sanitización</li>
-          <li>Campañas y jornadas saludables</li>
-        </ul>
-      `
-    },
-    capacitacion: {
-      titulo: 'Capacitación y Entrenamiento',
-      img: 'assets/capacitacion.jpg',
-      html: `
-        <h4>Formación frente a riesgos</h4>
-        <ul>
-          <li>Riesgo físico</li>
-          <li>Riesgo químico</li>
-          <li>Riesgo biomecánico</li>
-          <li>Riesgo de seguridad</li>
-          <li>Riesgo locativo</li>
-          <li>Riesgo eléctrico</li>
-          <li>Riesgo público</li>
-          <li>Riesgo psicosocial</li>
-          <li>Riesgo biológico</li>
-          <li>Medicina Preventiva y del Trabajo</li>
-          <li>Higiene Industrial</li>
-        </ul>
-      `
-    },
-    habilidades: {
-      titulo: 'Desarrollo y Certificación de Habilidades',
-      img: 'assets/desarrollo.jpg',
-      html: `
-        <h4>Programas y certificaciones</h4>
-        <ul>
-          <li>Primeros auxilios</li>
-          <li>Brigadas de respuesta a emergencias</li>
-          <li>Técnicas de evacuación y rescate</li>
-          <li>Brigadas contra incendios</li>
-          <li>Trabajo seguro en alturas</li>
-          <li>Trabajo seguro en espacios confinados</li>
-          <li>Atención a víctimas en siniestros viales</li>
-          <li>Certificación internacional de Brigadista integral</li>
-        </ul>
-      `
-    }
-  };
+ const SERVICIOS_DETALLE = {
+  mejora: {
+    titulo: 'Auditoría Interna',
+    img: 'assets/auditoria.jpg',
+    html: `
+      <h4>Impulsa la excelencia y el cumplimiento</h4>
+      <p>
+        Evaluamos tus procesos con una mirada objetiva para asegurar
+        <strong>calidad, seguridad y cumplimiento</strong>, y convertir los hallazgos en
+        oportunidades reales de mejora.
+      </p>
+      <ul class="bullets">
+        <li><strong>Diagnóstico claro:</strong> identificamos brechas y priorizamos acciones.</li>
+        <li><strong>Mejora continua:</strong> planes prácticos y medibles que sí se implementan.</li>
+        <li><strong>Confianza y reputación:</strong> fortalece tu sistema de gestión ante clientes y auditorías externas.</li>
+      </ul>
+      <p>
+        Nuestra meta: procesos más <strong>seguros, eficientes y sostenibles</strong>, con resultados que se notan en el día a día.
+      </p>
+    `
+  },
+
+  consultoria: {
+    titulo: 'Asesoría y Consultoría',
+    img: 'assets/asesoria.jpg',
+    html: `
+      <h4>Soluciones a la medida que generan impacto</h4>
+      <p>
+        Te acompañamos a diseñar e implementar estrategias de <strong>seguridad, salud y bienestar</strong>
+        alineadas con tus metas de negocio. Menos riesgo, más productividad.
+      </p>
+      <ul class="bullets">
+        <li><strong>Estrategia personalizada:</strong> cada empresa es distinta; tu solución también.</li>
+        <li><strong>Gestión del riesgo efectiva:</strong> decisiones basadas en datos y realidad operativa.</li>
+        <li><strong>Bienestar del equipo:</strong> programas que mejoran clima, salud y desempeño.</li>
+      </ul>
+      <p>
+        Deja los temas complejos en manos expertas y enfócate en crecer con
+        un entorno de trabajo <strong>más seguro y humano</strong>.
+      </p>
+    `
+  },
+
+  capacitacion: {
+    titulo: 'Capacitación y Entrenamiento',
+    img: 'assets/capacitacion.jpg',
+    html: `
+      <h4>Equipos preparados, empresas más seguras</h4>
+      <p>
+        Diseñamos experiencias de aprendizaje <strong>prácticas y memorables</strong> para desarrollar
+        habilidades clave: prevención, respuesta y autocuidado.
+      </p>
+      <ul class="bullets">
+        <li><strong>Metodología activa:</strong> casos reales, práctica guiada y evaluación.</li>
+        <li><strong>Competencias aplicables:</strong> lo que se aprende, se usa en el trabajo.</li>
+        <li><strong>Cultura de seguridad:</strong> hábitos que reducen incidentes y mejoran la productividad.</li>
+      </ul>
+      <p>
+        Invierte en conocimiento que <strong>salva vidas</strong> y hace que tu operación funcione mejor cada día.
+      </p>
+    `
+  },
+
+  habilidades: {
+    titulo: 'Desarrollo y Certificación de Habilidades',
+    img: 'assets/desarrollo.jpg',
+    html: `
+      <h4>Certifica el talento que te protege</h4>
+      <p>
+        Programas prácticos para validar y elevar competencias en emergencias y trabajos de alto riesgo.
+        Tu equipo con la <strong>confianza</strong> y el respaldo que necesita.
+      </p>
+      <ul class="bullets">
+        <li><strong>Entrenamiento realista:</strong> escenarios controlados y simulaciones.</li>
+        <li><strong>Estandares reconocidos:</strong> certificaciones con valor para tu operación y auditorías.</li>
+        <li><strong>Respuesta efectiva:</strong> personas listas para actuar cuando más importa.</li>
+      </ul>
+      <p>
+        Convierte a tu equipo en un <strong>activo estratégico</strong> de seguridad y cumplimiento.
+      </p>
+    `
+  }
+};
+
 
   // ===== Referencias del panel =====
   const panel   = document.getElementById('detalle-servicio');
@@ -614,3 +620,22 @@ document.addEventListener('DOMContentLoaded', () => {
   localStorage.setItem('theme', newTheme);
 }  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+
+    // año dinámico
+  (function(){
+    var y = document.getElementById('y');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+
+  // botón Ir arriba
+  (function(){
+    var toTop = document.getElementById('toTop');
+    if(!toTop) return;
+    var toggle = function(){
+      if (window.scrollY > 400) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    };
+    window.addEventListener('scroll', toggle, {passive:true});
+    toggle();
+    toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  })();

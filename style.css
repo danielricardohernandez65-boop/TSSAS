@@ -1032,7 +1032,7 @@ h1, h2, h3, h4, .section-title { color: var(--text); }
   display:flex; align-items:center; gap:16px; justify-content:space-between;
   padding:14px 0 24px; border-top:1px solid var(--border); margin-top:8px;
 }
-.site-footer.pro .mini-logo{ height:28px; width:auto; filter: drop-shadow(0 1px 0 rgba(0,0,0,.1)); }
+
 .site-footer.pro .copy{ color: var(--muted); text-align:center; flex:1; }
 .site-footer.pro .social-mini a{
   display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px;
@@ -1236,3 +1236,248 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-heading); }
 
 /* asegúrate que todo herede (por si algún bloque seteó otra fuente) */
 *, *::before, *::after { font-family: inherit; }
+.bullets {
+  margin: 10px 0 12px;
+  padding-left: 18px;
+  color: #d9dde5; /* o var(--muted) en oscuro */
+  line-height: 1.55;
+}
+.bullets li { margin-bottom: 20px; }
+.bullets li strong { color: #fff; } /* en claro, cambia a #222 */
+:root.light .bullets { color:#4a5568; }
+:root.light .bullets li strong { color:#222; }
+.faq-image img {
+  max-width: 180px;   /* achicada */
+  height: auto;
+  border-radius: 12px; /* puedes cambiar a 50% si la quieres circular */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  object-fit: cover;
+}
+:root{
+  --f-bg:#0e1620;         /* fondo oscuro */
+  --f-card:#12202d;       /* tarjetas */
+  --f-line:rgba(255,255,255,.12);
+  --f-text:#e6eef6;
+  --f-muted:#a7b7c8;
+  --f-brand:#eb8136;      /* naranja ATSSAS */
+  --f-brand2:#2cbec1;     /* turquesa ATSSAS */
+}
+
+
+
+.footer-neo{
+  position:relative;
+  color:var(--f-text);
+  background:var(--f-bg);
+  padding:34px 0 16px;
+  border-top:3px solid var(--f-brand);
+  overflow:hidden;
+}
+
+.footer-neo .f-wrap{ width:min(1200px,92vw); margin:0 auto; }
+
+.footer-neo .f-top{
+  display:grid; grid-template-columns: repeat(3,1fr); gap:22px;
+}
+
+
+.footer-neo .f-head{
+  display:flex; align-items:center; gap:10px;
+  padding-bottom:8px; margin-bottom:10px;
+  border-bottom:1px solid var(--f-line);
+}
+.footer-neo .f-head h4{ margin:0; font-size:1.05rem; font-weight:800 }
+.footer-neo .f-head svg{ width:22px; height:22px; fill:var(--f-brand) }
+
+.footer-neo .f-list{ list-style:none; margin:0; padding:0; }
+.footer-neo .f-list li{ margin:8px 0; color:var(--f-muted) }
+.footer-neo .f-list li span{ color:var(--f-text); font-weight:700 }
+.footer-neo a{ color:var(--f-text); text-decoration: none; border-bottom:1px dashed transparent }
+.footer-neo a:hover{ color:var(--f-brand); border-color: currentColor }
+
+.f-social{ display:flex; gap:10px; margin-top:4px; }
+.soc{ width:40px; height:40px; display:grid; place-items:center; border-radius:50%;
+      background:rgba(255,255,255,.06); border:1px solid var(--f-line) }
+.soc svg{ width:20px; height:20px; fill:#fff }
+.soc.fb{ background:#1877f2 }
+.soc.ig{ background: radial-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888) }
+.soc.wa{ background:#25D366 }
+
+.f-links-small{ margin-top:10px }
+.f-links-small li{ display:inline-block; margin-right:12px }
+
+.f-sep{ border:none; height:1px; background:var(--f-line); margin:18px 0 14px }
+
+.f-links{
+  display:flex; flex-wrap:wrap; gap:16px;
+  justify-content:center; margin-bottom:10px;
+}
+.f-links a{
+  color:var(--f-muted); border-bottom:1px dashed transparent; font-weight:600;
+}
+.f-links a:hover{ color:var(--f-brand); border-color: currentColor }
+
+.f-bottom{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.f-bottom .f-copy{ color:var(--f-muted); font-size:.95rem }
+.f-bottom .f-mini img{ height:100px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.2)); }
+
+/* botón “ir arriba” */
+.f-topbtn{
+  position:fixed; right:20px; bottom:22px; z-index:60;
+  width:44px; height:44px; border-radius:50%;
+  background:var(--f-brand); color:#111; border:none; cursor:pointer;
+  box-shadow:0 10px 26px rgba(235,129,54,.35);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; font-weight:900; opacity:0; visibility:hidden; transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease, background .25s ease;
+}
+.f-topbtn.show{ opacity:1; visibility:visible; transform: translateY(0) }
+.f-topbtn:hover{ background:#d6732f }
+
+/* responsive */
+@media (max-width: 1000px){
+  .footer-neo .f-top{ grid-template-columns:1fr; }
+  .f-bottom{ flex-direction:column; gap:6px; }
+}
+/* Logo del header */
+nav img {
+  max-height: 70px;   /* 👈 altura más grande */
+  width: auto;        /* mantiene proporción */
+}
+
+/* Si quieres que se agrande más en pantallas grandes */
+@media (min-width: 992px) {
+  nav img {
+    max-height: 90px;  /* aún más grande en escritorio */
+  }
+}
+/* ===== Footer: mini-logo grande y bien ubicado ===== */
+.site-footer .footer-bottom {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* logo | copy | rrss */
+  align-items: center;
+  gap: 16px;
+}
+
+
+/* === Footer: forzar tamaño del logo real === */
+.site-footer .footer-bottom .mini-logo,
+.footer-bottom .mini-logo {
+  height: 80px !important;      /* ajústalo a 64–96px si quieres */
+  width: auto !important;
+  display: inline-block !important;
+  position: static !important;
+  transform: none !important;
+  float: none !important;
+  opacity: 1 !important;
+}
+
+/* === Apagar “marcas de agua” o adornos diminutos === */
+.site-footer .footer-bottom::after,
+.site-footer .footer-bottom::before,
+.site-footer .copy::after,
+.site-footer .copy::before {
+  content: none !important;
+  background: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* === Asegurar layout del bloque inferior (logo | copy | rrss) === */
+.site-footer .footer-bottom{
+  display: grid !important;
+  grid-template-columns: auto 1fr auto !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+/* === FOOTER BLOQUEADO EN OSCURO (para ambos temas) === */
+:root[data-theme="light"] .site-footer,
+:root[data-theme="dark"]  .site-footer,
+.site-footer {
+  background: #0b0d13 !important;
+  color: #eaeaea !important;
+  border-top: 1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Tarjetas/boxes dentro del footer (Contáctanos, Punto físico, Redes sociales) */
+.site-footer .footer-grid > div,
+.site-footer .fcard {
+  background: rgba(255,255,255,.03) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  color: #eaeaea !important;
+}
+
+/* Títulos y textos del footer */
+.site-footer h4,
+.site-footer li,
+.site-footer p,
+.site-footer span {
+  color: #eaeaea !important;
+  opacity: 1 !important;
+}
+
+/* Links del footer */
+.site-footer a {
+  color: #cfd3da !important;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: #eb8136 !important;
+}
+
+/* Filita de enlaces (políticas, mapa del sitio, etc.) */
+.site-footer .footer-bottom,
+.site-footer .copy {
+  color: #a8b3c2 !important;
+}
+
+/* Opcional: loguito del footer (ajusta tamaño si quieres) */
+.site-footer .footer-bottom .mini-logo,
+.f-bottom .f-mini img {
+  height: 100px !important; /* cambia a 80–120px a tu gusto */
+  width: auto !important;
+}
+/* === Footer siempre en modo oscuro === */
+.footer-neo {
+  background: #0d1117 !important; /* fondo oscuro fijo */
+  color: #f0f0f0 !important;      /* texto claro fijo */
+}
+
+/* Forzar títulos del footer siempre blancos */
+.footer-neo .f-head h4,
+.footer-neo h4 {
+  color: #ffffff !important;
+}
+/* Corregir fondo blanco en los enlaces pequeños del footer */
+.footer-neo .f-links,
+.footer-neo .f-links li,
+.footer-neo .f-links a {
+  background: transparent !important;
+  color: #cfd3da !important;  /* gris claro legible */
+}
+
+.footer-neo .f-links a:hover {
+  color: #eb8136 !important; /* naranja al pasar el mouse */
+}
+.footer-neo .f-col .f-mini img {
+  height: 100px;   /* prueba con 60–100px */
+  width: auto;
+  margin-top: 12px;
+}
+.f-copy.boxed {
+  display: block;
+  width: 100%;         /* ocupa todo el ancho */
+  margin: 20px 0 0;    /* separación arriba */
+  padding: 14px 20px;  /* espacio interno */
+  border-top: 1px solid rgba(255,255,255,.15); /* línea divisoria arriba */
+  background: rgba(255,255,255,.05);           /* barra translúcida */
+  text-align: center;  /* centra el texto */
+  font-size: 0.95rem;
+  color: #eaeaea;
+}
+
+.f-bottom {
+  text-align: center;
+}
