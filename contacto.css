@@ -1,0 +1,187 @@
+:root{
+  --bg:#0b0f14;
+  --card:#171c22;
+  --stroke:rgba(255,255,255,.08);
+  --text:#e8eef6;
+  --muted:#9fb0c3;
+  --brand:#eb8136;
+  --brand2:#2cbec1;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text); background:radial-gradient(1200px 600px at 10% -10%, #18212a 0%, transparent 60%), var(--bg);
+  overflow-x:hidden;
+}
+
+/* Partículas cubren todo */
+#tsparticles{ position:fixed; inset:0; z-index:-2 }
+
+/* Aurora / glow animado */
+.aurora{
+  position:fixed; inset:-20% -10% auto auto; height:60vmin; width:60vmin; z-index:-1;
+  background: radial-gradient(closest-side, rgba(44,190,193,.22), transparent 60%),
+              radial-gradient(closest-side, rgba(235,129,54,.18), transparent 60%);
+  filter: blur(30px); opacity:.9; mix-blend-mode: screen;
+  animation: float 12s ease-in-out infinite alternate;
+}
+@keyframes float{ from{ transform:translate(10px,10px) rotate(0) } to{ transform:translate(-40px,-20px) rotate(10deg) } }
+
+.topbar{
+  display:flex; align-items:center; gap:12px; padding:18px 20px; border-bottom:1px solid var(--stroke);
+  backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00));
+}
+.topbar h1{ margin:0; font-size:1.4rem; letter-spacing:.3px }
+.topbar .back{ color:var(--muted); text-decoration:none; font-weight:700 }
+.topbar .back:hover{ color:#fff }
+
+.shell{ width:min(1100px,92vw); margin:32px auto 80px; }
+
+.hero{ text-align:center; margin:30px 0 10px }
+.hero h2{ font-size:2rem; margin:.2rem 0 }
+.hero p{ color:var(--muted); margin:.2rem 0 }
+
+.cards{
+  display:grid; gap:22px; grid-template-columns:1fr; margin-top:18px;
+}
+
+/* Tarjetas */
+.card{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--stroke);
+  border-radius:18px; padding:18px 18px 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  transform-style: preserve-3d;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{ border-color:rgba(235,129,54,.45); box-shadow:0 18px 48px rgba(0,0,0,.55) }
+
+.card-head{ display:flex; align-items:center; justify-content:center; }
+.card h3{ margin:4px 0 2px; letter-spacing:.2px }
+
+.icon-wrap{ display:flex; align-items:center; justify-content:center; margin:8px 0 2px }
+.icon{ width:84px; height:84px; fill:#0f141a; stroke:none; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+.icon-wrap.phone .icon{ fill:#10b981; }     /* verde */
+.icon-wrap.pin   .icon{ fill:#60a5fa; }     /* azulito */
+
+.icon-grid{ display:flex; gap:16px; justify-content:center; margin:10px 0 4px }
+.soc{ display:grid; place-items:center; width:72px; height:72px; border-radius:16px;
+      background:rgba(255,255,255,.04); border:1px solid var(--stroke); text-decoration:none }
+.soc .icon{ width:36px; height:36px; fill:#e5e7eb }
+.soc:hover{ outline:2px solid rgba(235,129,54,.45) }
+
+.list{ list-style:none; margin:10px 0 2px; padding:0; text-align:center }
+.list li{ margin:8px 0; color:#d7deea }
+.muted{ color:var(--muted); text-align:center; margin:4px 0 0 }
+
+.btn{
+  display:inline-block; background:var(--brand); color:#111; font-weight:800;
+  padding:10px 14px; border-radius:12px; text-decoration:none;
+  box-shadow:0 8px 24px rgba(235,129,54,.35);
+  transition: transform .2s ease, box-shadow .2s ease, filter .3s ease;
+}
+.btn:hover{ transform:translateY(-2px); filter:saturate(1.2); }
+.btn.ghost{ background:transparent; color:#fff; border:1px solid var(--stroke); box-shadow:none }
+.btn.ghost:hover{ border-color:rgba(235,129,54,.45) }
+
+/* Reveal base (GSAP añade .in) */
+.reveal{ opacity:0; transform: translateY(14px); }
+.reveal.in{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease }
+
+/* Responsive */
+@media (min-width:860px){
+  .cards{ grid-template-columns: 1fr; } /* una debajo de otra como pediste */
+}
+/* Mini mapa */
+.mini-map{
+  width:100%;
+  height:220px;              /* alto del mapa */
+  border-radius:14px;
+  border:1px solid var(--stroke);
+  margin:10px 0 8px;
+  overflow:hidden;
+  box-shadow:0 8px 22px rgba(0,0,0,.35);
+}
+
+/* Marcador pulso */
+.leaflet-container{ background:#10151a; } /* por si tarda la carga */
+
+.pulse-marker{ position:relative; }
+.pulse-marker span{
+  display:block; width:14px; height:14px; border-radius:50%;
+  background:#eb8136; box-shadow:0 0 0 2px rgba(235,129,54,.35);
+}
+.pulse-marker .pulse{
+  position:absolute; left:50%; top:50%; width:14px; height:14px; margin:-7px 0 0 -7px;
+  border-radius:50%; background:rgba(235,129,54,.35);
+  animation:pulse 2s ease-out infinite;
+}
+@keyframes pulse{
+  0%{ transform:scale(1); opacity:.9 }
+  70%{ transform:scale(2.6); opacity:0 }
+  100%{ opacity:0 }
+}
+.icon-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 12px;
+}
+
+.social-link img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+  transition: transform .2s ease, filter .3s ease;
+}
+
+.social-link:hover img {
+  transform: scale(1.2);
+  filter: drop-shadow(0 4px 12px rgba(235,129,54,.6));
+}
+.icon-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+.social-link {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  background: #222;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+}
+
+.social-link:hover {
+  transform: scale(1.2) rotate(8deg);
+  box-shadow: 0 6px 18px rgba(0,0,0,.6);
+}
+
+/* Colores específicos */
+.social-link.facebook { background: #1877f2; }
+.social-link.instagram { 
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.social-link.whatsapp { background: #25d366; }
+
+/* Animación pulsante */
+.social-link:hover i {
+  animation: pulse 0.6s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.3); }
+}

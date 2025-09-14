@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contáctanos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="contacto.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+</head>
+<body>
+  <!-- Partículas en el fondo -->
+  <div id="tsparticles"></div>
+
+  <!-- Glow/Aurora decorativa -->
+  <div class="aurora"></div>
+
+  <header class="topbar">
+    <a class="back" href="index.html">← Volver</a>
+    <h1>Contáctanos</h1>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <h2 class="reveal">Estamos para ayudarte</h2>
+      <p class="reveal delay">Elige el canal que prefieras. Respondemos rápido 🚀</p>
+    </section>
+
+    <section class="cards">
+      <!-- 1) Líneas de atención -->
+      <article class="card reveal tilt magnet">
+        <div class="card-head">
+          <h3>Líneas de atención</h3>
+        </div>
+        <div class="icon-wrap phone">
+          <!-- SVG animable -->
+          <svg viewBox="0 0 24 24" class="icon"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.5-.37 9.6 9.6 0 003 .48 1.5 1.5 0 011.5 1.5V20a2 2 0 01-2 2A18 18 0 012 6a2 2 0 012-2h3.25a1.5 1.5 0 011.5 1.5 9.6 9.6 0 00.48 3 1.5 1.5 0 01-.37 1.5L6.6 10.8z"/></svg>
+        </div>
+        <ul class="list">
+          <li>Tel: +57 (7) 683 6669</li>
+          <li>Cel: +57 317 638 4710</li>
+          <li><a class="btn" href="mailto:info@tuempresa.com">Escríbenos</a></li>
+        </ul>
+      </article>
+
+      <!-- 2) Puntos de atención -->
+<article class="card reveal tilt magnet">
+  <div class="card-head">
+    <h3>Puntos de atención</h3>
+  </div>
+
+  <div id="miniMap" class="mini-map"></div>  <!-- 🔹 Aquí va el mapa -->
+
+  <div class="icon-wrap pin">
+    <svg viewBox="0 0 24 24" class="icon"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 112.5-2.5A2.5 2.5 0 0112 11.5z"/></svg>
+  </div>
+
+  <ul class="list">
+    <li>Calle 55a No. 27 – 22</li>
+    <li>Barrio Bolarquí — Bucaramanga</li>
+    <li><a class="btn ghost" href="https://maps.google.com/?q=Calle+55a+No.+27+–+22+Bucaramanga" target="_blank" rel="noopener">Ver en Maps</a></li>
+  </ul>
+</article>
+
+      <!-- 3) Redes sociales -->
+      <article class="card reveal tilt magnet">
+<div class="icon-grid">
+  <!-- Facebook -->
+  <a class="soc" aria-label="Facebook"
+     href="https://www.facebook.com/atssas" 
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" class="icon"><path d="M13 22v-8h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v3H6v4h3v8h4z"/></svg>
+  </a>
+
+  <!-- Instagram -->
+  <a class="soc" aria-label="Instagram"
+     href="https://www.instagram.com/atssas_sas" 
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" class="icon"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 105 5 5 5 0 00-5-5zm6-2a1 1 0 101 1 1 1 0 00-1-1z"/></svg>
+  </a>
+
+  <!-- WhatsApp (ya estaba bien) -->
+  <a class="soc" aria-label="WhatsApp"
+     href="https://wa.me/573176384710" 
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" class="icon"><path d="M.06 24l1.68-6.15A11.94 11.94 0 0112 0a12 12 0 110 24 11.94 11.94 0 01-6.15-1.68L.06 24zm6.73-3.52a9.83 9.83 0 004.6 1.16h.01a9.9 9.9 0 009.9-9.88 9.79 9.79 0 00-2.89-6.96A9.83 9.83 0 0011.4 1.9a9.89 9.89 0 00-8.57 14.93l-.55 2 2.05-.54zM8 7.6c.17-.38.33-.39.48-.4h.41c.13 0 .3 0 .46.35s.59 1.13.65 1.21a.39.39 0 010 .37 2.6 2.6 0 01-.34.53c-.17.2-.35.45-.15.86s1 1.68 2.13 2.72 2.45 1.66 2.82 1.86.62.16.85-.09a6.7 6.7 0 00.44-.73.35.35 0 01.5-.14l1.94.91c.17.08.28.14.32.22s.05.52-.12 1a2.43 2.43 0 01-1.5 1.32 3.4 3.4 0 01-1.56.1 11.3 11.3 0 01-4.86-2.66A12.88 12.88 0 017.3 10.9c-.49-.84-.51-1.54-.34-2 .19-.5.7-.79 1.03-1.3z"/></svg>
+  </a>
+</div>
+
+        <p class="muted">Síguenos para novedades, eventos y tips de SST.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Librerías (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+  <!-- Tu script -->
+   <script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+
+  <script src="contacto.js"></script>
+
+  <footer id="contacto" class="site-footer">
+  <div class="container">
+
+    <!-- Título -->
+    <h3 class="footer-title">Contáctanos</h3>
+
+    <!-- Grid de columnas -->
+    <div class="footer-grid">
+      <div>
+        <h4>Línea de atención</h4>
+        <ul>
+          <li>Tel: +57 (7) 683 6669</li>
+          <li>Cel: +57 317 638 4710</li>
+          <li>Web: <a href="http://www.atssas.net" target="_blank" rel="noopener">www.atssas.net</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Punto físico</h4>
+        <ul>
+          <li>Calle 55a No. 27 – 22</li>
+          <li>Barrio Bolarquí</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes sociales</h4>
+        <ul class="rrss">
+          <li>Facebook: <a href="https://www.facebook.com/atssas" target="_blank" rel="noopener">atssas</a></li>
+          <li>Instagram: <a href="https://www.instagram.com/atssas_sas" target="_blank" rel="noopener">@atssas_sas</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="copy">© <span id="y"></span> ATSSAS. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+  // año dinámico (mismo que en index)
+  (function(){
+    var y = document.getElementById('y');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+</script>
+
+</body>
+</html>

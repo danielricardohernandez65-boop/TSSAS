@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
     <!-- TU CÓDIGO ORIGINAL -->
@@ -15,6 +17,9 @@
             <a href="">Inicio</a>
             <a href="">Servicios</a>
             <a href="">Quienes somos</a>
+            <a href="contacto.html" target="_blank" rel="noopener">Contáctanos</a>
+
+
         </div>
     </nav>
 
@@ -69,16 +74,210 @@
         <button class="nav-btn next">›</button>
     </div>
 
-    <!-- Contenido adicional -->
-    <section class="main-content" id="servicios">
-        <div class="content-section">
-            <h2>Nuestros Servicios</h2>
-            <p>Ofrecemos una amplia gama de seguros diseñados para proteger lo que más valoras. Desde seguros de vida hasta cobertura empresarial, nuestro equipo de expertos está aquí para brindarte la mejor protección y tranquilidad.</p>
-        </div>
-    </section>
+<!-- === NUESTROS SERVICIOS (4 tarjetas principales) === -->
+<section class="main-content" id="servicios">
+  <div class="content-section">
+    <h2>Nuestros Servicios</h2>
+    <p>
+      Soluciones integrales en seguridad y salud en el trabajo, auditoría y consultoría, 
+      formación y desarrollo de habilidades para la gestión efectiva del riesgo.
+    </p>
+  </div>
+
+  <div class="sec-servicios container">
+    <div class="servicios-grid">
+
+      <!-- 1) Mejora Continua -->
+      <article class="srv-card">
+        <h3>Auditoria Interna</h3>
+        <p>
+          Auditorías internas a sistemas de gestión (SST, Calidad, Ambiental, 
+          Seguridad Vial, Gestión del Riesgo), bajo normatividad vigente.
+        </p>
+        <a class="btn-outline" href="#mejora" data-key="mejora">Ver más</a>
+      </article>
+
+      <!-- 2) Asesoría y Consultoría -->
+      <article class="srv-card">
+        <h3>Asesoría y Consultoría</h3>
+        <p>
+          Acompañamiento técnico en higiene industrial, investigación de incidentes, 
+          valoración de riesgos, programas de bioseguridad y psicosocial.
+        </p>
+        <a class="btn-outline" href="#consultoria" data-key="consultoria">Ver más</a>
+      </article>
+
+      <!-- 3) Capacitación y Entrenamiento -->
+      <article class="srv-card">
+        <h3>Capacitación y Entrenamiento</h3>
+        <p>
+          Formación frente a riesgos físicos, químicos, biológicos, eléctricos, 
+          viales y psicosociales, higiene industrial y medicina preventiva.
+        </p>
+        <a class="btn-outline" href="#capacitacion" data-key="capacitacion">Ver más</a>
+      </article>
+
+      <!-- 4) Desarrollo y Certificación de Habilidades -->
+      <article class="srv-card">
+        <h3>Desarrollo y Certificación de Habilidades</h3>
+        <p>
+          Primeros auxilios, brigadas, control de incendios, rescate, alturas, 
+          espacios confinados y certificación de Brigadista Integral.
+        </p>
+       <a class="btn-outline" href="#habilidades" data-key="habilidades">Ver más</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="detalle-servicio" class="srv-detail hidden">
+  <div class="container">
+    <header class="srv-detail__head">
+      <h3 id="srv-title">Servicio</h3>
+      <button type="button" id="srv-close" aria-label="Cerrar">✕</button>
+    </header>
+
+    <!-- Nuevo contenedor grid -->
+    <div class="srv-detail__content">
+      <!-- Texto -->
+      <div id="srv-body" class="srv-detail__body"></div>
+      <!-- Imagen -->
+      <div class="srv-detail__media">
+        <img id="srv-img" src="" alt="Imagen del servicio">
+      </div>
+    </div>
+
+    <div class="srv-detail__actions">
+      <a id="srv-wa" class="btn primary" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+      <a href="#servicios" class="btn ghost">Volver a servicios</a>
+    </div>
+  </div>
+</section>
+
+
+
+ <!-- === PREGUNTAS FRECUENTES === -->
+<section id="faq" class="sec-faq">
+  <div class="container faq-split-simple">
+    <div class="faq-accordion">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+
+      <details class="faq-item">
+        <summary>¿Cuál es el eslogan oficial?</summary>
+        <p>“Apoyo Técnico en Seguridad Industrial y Salud en el Trabajo”.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Dónde están ubicados?</summary>
+        <p>Calle 55a No. 27 – 22, Barrio Bolarquí, Bucaramanga.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cómo los contacto?</summary>
+        <p>Tel: +57 (7) 683 6669 — Cel: +57 317 638 4710</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cuáles son sus redes oficiales?</summary>
+        <p>Facebook: atssas — Instagram: @atssas</p>
+      </details>
+    </div>
+
+    <!-- Columna de imagen a la derecha -->
+    <aside class="faq-media">
+      <img src="./assets/image.png" alt="ATSSAS identidad corporativa" class="faq-img">
+    </aside>
+  </div>
+</section>
+
+<!-- === FOOTER / CONTÁCTANOS === -->
+<footer id="contacto" class="site-footer">
+  <div class="container">
+
+    <!-- Título -->
+    <h3 class="footer-title">Contáctanos</h3>
+
+    <!-- Grid de columnas -->
+    <div class="footer-grid">
+      <div>
+        <h4>Línea de atención</h4>
+        <ul>
+          <li>Tel: +57 (7) 683 6669</li>
+          <li>Cel: +57 317 638 4710</li>
+          <li>Web: <a href="http://www.atssas.net" target="_blank" rel="noopener">www.atssas.net</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Punto físico</h4>
+        <ul>
+          <li>Calle 55a No. 27 – 22</li>
+          <li>Barrio Bolarquí</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes sociales</h4>
+        <ul class="rrss">
+          <li>Facebook: atssas</li>
+          <li>Instagram: @atssas</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="copy">© <span id="y"></span> ATSSAS. Todos los derechos reservados.</div>
+</footer>
+
+
+<!-- Año dinámico (deja este <script> justo después del footer) -->
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+
 
     <!-- JAVASCRIPT DEL SLIDER -->
     <script src="./scripts.js"></script>
+    <script>
+  (function () {
+    // 1) Asegurar #inicio en el slider sin tocar tu HTML
+    const hero = document.querySelector('.slider-container');
+    if (hero && !hero.id) hero.id = 'inicio';
+
+    // 2) Mapear enlaces por texto visible
+    const map = { 'inicio': '#inicio', 'servicios': '#servicios', 'quienes somos': '#contacto' }; // cambia '#contacto' si luego creas #quienes-somos
+    const links = document.querySelectorAll('.enlaces-servicios a');
+    links.forEach(a => {
+      const t = (a.textContent || '').trim().toLowerCase();
+      const href = map[t];
+      if (href) a.setAttribute('href', href);
+    });
+
+    // 3) Scroll suave
+    document.querySelectorAll('.enlaces-servicios a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // 4) Destacar enlace activo al hacer scroll
+    const sections = ['#inicio', '#servicios', '#faq', '#contacto']
+      .map(id => document.querySelector(id))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+    };
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if (e.isIntersecting) setActive('#'+e.target.id); });
+    }, { rootMargin: '-45% 0px -55% 0px', threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+  })();
+</script>
+
     
 </body>
 </html>
